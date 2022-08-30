@@ -5,11 +5,10 @@ namespace ToDo
 {
     internal class Program
     {
-        public static List<string> TaskList { get; set; }
+        public static List<string> TaskList { get; set; } =  new List<string>();
 
         static void Main(string[] args)
         {
-            TaskList = new List<string>();
             int menuSelected = 0;
             do
             {
@@ -93,17 +92,17 @@ namespace ToDo
 
         public static void ShowMenuTaskList()
         {
-            if (TaskList == null || TaskList.Count == 0)
-            {
-                Console.WriteLine("No hay tareas por realizar");
-            } 
-            else
+            if (TaskList?.Count > 0)
             {
                 Console.WriteLine("----------------------------------------");
                 var indexTask=1;
-                TaskList.ForEach(p=> Console.WriteLine(indexTask++ + ". " + p));
+                TaskList.ForEach(p=> Console.WriteLine($"{indexTask++} . {p}"));
                 
                 Console.WriteLine("----------------------------------------");
+            } 
+            else
+            {
+                Console.WriteLine("No hay tareas por realizar");
             }
         }
     }
