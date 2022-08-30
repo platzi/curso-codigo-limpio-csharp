@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿List<string> TaskList =  new List<string>();
 
-namespace ToDo
-{
-    internal class Program
-    {
-        public static List<string> TaskList { get; set; } =  new List<string>();
-
-        static void Main(string[] args)
-        {
             int menuSelected = 0;
             do
             {
@@ -26,12 +17,12 @@ namespace ToDo
                     ShowMenuTaskList();
                 }
             } while ((Menu)menuSelected != Menu.Exit);
-        }
+
         /// <summary>
         /// Show the main menu 
         /// </summary>
         /// <returns>Returns option indicated by user</returns>
-        public static int ShowMainMenu()
+        int ShowMainMenu()
         {
             Console.WriteLine("----------------------------------------");
             Console.WriteLine("Ingrese la opción a realizar: ");
@@ -45,7 +36,7 @@ namespace ToDo
             return Convert.ToInt32(menuSelected);
         }
 
-        public static void ShowMenuRemove()
+        void ShowMenuRemove()
         {
             try
             {
@@ -76,7 +67,7 @@ namespace ToDo
             }
         }
 
-        public static void ShowMenuAdd()
+        void ShowMenuAdd()
         {
             try
             {
@@ -90,7 +81,7 @@ namespace ToDo
             }
         }
 
-        public static void ShowMenuTaskList()
+        void ShowMenuTaskList()
         {
             if (TaskList?.Count > 0)
             {
@@ -105,7 +96,6 @@ namespace ToDo
                 Console.WriteLine("No hay tareas por realizar");
             }
         }
-    }
 
     public enum Menu
     {
@@ -114,4 +104,4 @@ namespace ToDo
         List = 3,
         Exit = 4
     }
-}
+
