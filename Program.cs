@@ -10,23 +10,23 @@ namespace ToDo
         static void Main(string[] args)
         {
             TaskList = new List<string>();
-            int variable = 0;
+            int menuSelected = 0;
             do
             {
-                variable = ShowMainMenu();
-                if (variable == 1)
+                menuSelected = ShowMainMenu();
+                if (menuSelected == 1)
                 {
                     ShowMenuAdd();
                 }
-                else if (variable == 2)
+                else if (menuSelected == 2)
                 {
-                    ShowMenuDos();
+                    ShowMenuRemove();
                 }
-                else if (variable == 3)
+                else if (menuSelected == 3)
                 {
-                    ShowMenuTres();
+                    ShowMenuTaskList();
                 }
-            } while (variable != 4);
+            } while (menuSelected != 4);
         }
         /// <summary>
         /// Show the main menu 
@@ -46,7 +46,7 @@ namespace ToDo
             return Convert.ToInt32(line);
         }
 
-        public static void ShowMenuDos()
+        public static void ShowMenuRemove()
         {
             try
             {
@@ -90,7 +90,7 @@ namespace ToDo
             }
         }
 
-        public static void ShowMenuTres()
+        public static void ShowMenuTaskList()
         {
             if (TaskList == null || TaskList.Count == 0)
             {
