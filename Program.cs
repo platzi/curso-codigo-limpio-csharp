@@ -14,19 +14,19 @@ namespace ToDo
             do
             {
                 menuSelected = ShowMainMenu();
-                if (menuSelected == 1)
+                if ((Menu)menuSelected == Menu.Add)
                 {
                     ShowMenuAdd();
                 }
-                else if (menuSelected == 2)
+                else if ((Menu)menuSelected == Menu.Remove)
                 {
                     ShowMenuRemove();
                 }
-                else if (menuSelected == 3)
+                else if ((Menu)menuSelected == Menu.List)
                 {
                     ShowMenuTaskList();
                 }
-            } while (menuSelected != 4);
+            } while ((Menu)menuSelected != Menu.Exit);
         }
         /// <summary>
         /// Show the main menu 
@@ -42,8 +42,8 @@ namespace ToDo
             Console.WriteLine("4. Salir");
 
             // Read line
-            string line = Console.ReadLine();
-            return Convert.ToInt32(line);
+            string menuSelected = Console.ReadLine();
+            return Convert.ToInt32(menuSelected);
         }
 
         public static void ShowMenuRemove()
@@ -58,16 +58,16 @@ namespace ToDo
                 }
                 Console.WriteLine("----------------------------------------");
 
-                string line = Console.ReadLine();
+                string taskNumberToDelete = Console.ReadLine();
                 // Remove one position
-                int indexToRemove = Convert.ToInt32(line) - 1;
+                int indexToRemove = Convert.ToInt32(taskNumberToDelete) - 1;
                 if (indexToRemove > -1)
                 {
                     if (TaskList.Count > 0)
                     {
-                        string task = TaskList[indexToRemove];
+                        string taskToRemove = TaskList[indexToRemove];
                         TaskList.RemoveAt(indexToRemove);
-                        Console.WriteLine("Tarea " + task + " eliminada");
+                        Console.WriteLine("Tarea " + taskToRemove + " eliminada");
                     }
                 }
             }
@@ -81,8 +81,8 @@ namespace ToDo
             try
             {
                 Console.WriteLine("Ingrese el nombre de la tarea: ");
-                string task = Console.ReadLine();
-                TaskList.Add(task);
+                string newTask = Console.ReadLine();
+                TaskList.Add(newTask);
                 Console.WriteLine("Tarea registrada");
             }
             catch (Exception)
@@ -106,5 +106,13 @@ namespace ToDo
                 Console.WriteLine("----------------------------------------");
             }
         }
+    }
+
+    public enum Menu
+    {
+        Add = 1,
+        Remove = 2,
+        List = 3,
+        Exit = 4
     }
 }
