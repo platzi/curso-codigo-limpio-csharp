@@ -1,0 +1,26 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            // Use IntelliSense para averiguar qué atributos existen para la depuración de C#.
+            // Usar el puntero por encima para la descripción de los atributos existentes
+            // Para obtener más información, visite https://github.com/dotnet/vscode-csharp/blob/main/debugger-launchjson.md
+            "name": ".NET Core Launch (console)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // Si ha cambiado las plataformas de destino, asegúrese de actualizar la ruta de acceso del programa.
+            "program": "${workspaceFolder}/bin/Debug/net8.0/ToDo.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            // Para obtener más información sobre el campo \"consola\", consulte https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach"
+        }
+    ]
+}
