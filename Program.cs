@@ -24,17 +24,18 @@ namespace ToDo
                 }
                 else if ((Menu)menuSelected == Menu.List)
                 {
-                    ShowMenuTaskList();
+                    ShowTaskList();
                 }
             } while ((Menu)menuSelected != Menu.Exit);
         }
+        
         /// <summary>
         /// Show the main menu 
         /// </summary>
         /// <returns>Returns option indicated by user</returns>
         public static int ShowMainMenu()
         {
-            Console.WriteLine("----------------------------------------");
+            PrintSeparator();
             Console.WriteLine("Ingrese la opción a realizar: ");
             Console.WriteLine("1. Nueva tarea");
             Console.WriteLine("2. Remover tarea");
@@ -52,11 +53,7 @@ namespace ToDo
             {
                 Console.WriteLine("Ingrese el número de la tarea a remover: ");
                 // Show current taks
-                for (int i = 0; i < taskList.Count; i++)
-                {
-                    Console.WriteLine((i + 1) + ". " + taskList[i]);
-                }
-                Console.WriteLine("----------------------------------------");
+                ShowTaskList();
 
                 string line = Console.ReadLine();
                 // Remove one position
@@ -90,7 +87,7 @@ namespace ToDo
             }
         }
 
-        public static void ShowMenuTaskList()
+        public static void ShowTaskList()
         {
             if (taskList == null || taskList.Count == 0)
             {
@@ -98,12 +95,12 @@ namespace ToDo
             } 
             else
             {
-                Console.WriteLine("----------------------------------------");
+                PrintSeparator();
                 for (int i = 0; i < taskList.Count; i++)
                 {
                     Console.WriteLine((i + 1) + ". " + taskList[i]);
                 }
-                Console.WriteLine("----------------------------------------");
+                PrintSeparator();
             }
         }
 
@@ -114,5 +111,8 @@ namespace ToDo
             Exit = 4
         }
 
+        private static void PrintSeparator(){
+            Console.WriteLine("----------------------------------------");
+        }
     }
 }
